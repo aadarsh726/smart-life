@@ -16,18 +16,13 @@ Now featuring **Voice Control** 🗣️ and **Sentiment Analysis** 🧠!
 - **Smart Scheduling**: Auto-schedules your tasks based on priority and your predicted peak hours.
 - **Context-Aware AI Chat**: Ask "What should I do next?" and get voice-spoken answers.
 
-### 🗣️ Voice Interaction
-- **Hands-Free Control**: Use the microphone to chat with your assistant.
-- **Text-to-Speech**: The app speaks back to you, acting like a real digital butler.
 
 ### 🧘 Lifestyle & Wellness
 - **Smart Journal 📔**: Write about your day and let the **Sentiment Engine** analyze your mood (Positive/Negative) automatically.
 - **Habit Tracker 💧**: Build streaks for daily habits like "Drink Water" or "Read".
 - **Daily Check-ins**: Morning prompts to log sleep and mood data.
 
-### 📱 Mobile Ready (PWA)
-- **Installable**: work offline and behaves like a native app on iOS and Android.
-- **Touch Optimized**: Smooth interactions on all devices.
+
 
 ## 🛠️ Tech Stack
 This project uses a **Microservices Architecture**:
