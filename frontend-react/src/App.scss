@@ -1,0 +1,473 @@
+// @import 'bootstrap/scss/bootstrap'; // Commenting out to avoid clutter, will import only needed parts or ignore warnings if possible. 
+// For now, we will use the precompiled bootstrap CSS imported in main.jsx and just override here to avoid the sass deprecation noise in the terminal for the user.
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+// Color Palette from Reference
+$bg-color: #f5f6fa;
+$dark: #2d3436; // Alias for dark
+$text-dark: #2d3436;
+$text-muted: #636e72;
+$white: #ffffff;
+$primary: #4a66f9; // Vibrant Blue
+$secondary: #ff7675; // Soft Red
+$success: #00b894; // Green
+$warning: #fdcb6e; // Yellow
+$purple: #a55eea; // Purple for cards
+$card-radius: 20px;
+$shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.03);
+
+:root {
+  --primary-color: #{$primary};
+  --bg-color: #{$bg-color};
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: $bg-color;
+  color: $text-dark;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Layout
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+// Sidebar
+.sidebar {
+  width: 260px;
+  background: $white;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border-right: none;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.01);
+  z-index: 100;
+
+  .brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: $text-dark;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 3rem;
+    padding-left: 0.5rem;
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: $primary;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0.85rem 1rem;
+    color: $text-muted;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 14px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba($primary, 0.05);
+      color: $primary;
+    }
+
+    &.active {
+      background-color: $primary;
+      color: $white;
+      box-shadow: 0 4px 12px rgba($primary, 0.3);
+    }
+
+    svg {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Main Content
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+// Header
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $text-muted;
+      cursor: pointer;
+      position: relative;
+
+      &.has-notification::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 8px;
+        height: 8px;
+        background: $secondary;
+        border-radius: 50%;
+        border: 2px solid white;
+      }
+    }
+
+    .avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: url('https://i.pravatar.cc/150?img=32') center/cover;
+    }
+  }
+}
+
+// Cards & Widgets
+.widget-card {
+  background: $white;
+  border-radius: $card-radius;
+  padding: 1.5rem;
+  box-shadow: $shadow-soft;
+  height: 100%;
+  border: none;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+// Specific Widget Styles
+.task-category-card {
+  padding: 1.5rem;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  h6 {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .avatars {
+    display: flex;
+    margin-top: 1rem;
+
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      margin-right: -10px;
+    }
+  }
+
+  &.red {
+    background: linear-gradient(135deg, #ff9f43, #ff6b6b);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+  }
+
+  &.blue {
+    background: linear-gradient(135deg, #48dbfb, #2e86de);
+    box-shadow: 0 10px 20px rgba(46, 134, 222, 0.3);
+  }
+
+  &.green {
+    background: linear-gradient(135deg, #1dd1a1, #10ac84);
+    box-shadow: 0 10px 20px rgba(16, 172, 132, 0.3);
+  }
+
+  &.yellow {
+    background: linear-gradient(135deg, #feca57, #ff9f43);
+    box-shadow: 0 10px 20px rgba(255, 159, 67, 0.3);
+  }
+}
+
+.calendar-strip {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 1rem;
+
+  .day-item {
+    font-size: 0.9rem;
+    color: $text-muted;
+    padding: 0.5rem;
+    border-radius: 12px;
+    width: 40px;
+
+    .date {
+      display: block;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 5px;
+      color: $text-dark;
+    }
+
+    &.active {
+      background: $dark;
+      color: white;
+
+      .date {
+        color: white;
+      }
+    }
+  }
+}
+
+.timeline-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 1.5rem;
+
+  .time {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: $text-muted;
+    min-width: 50px;
+  }
+
+  .content {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 15px;
+    background: mix(white, $bg-color, 20%);
+    position: relative;
+    border-left: 4px solid;
+
+    &.work {
+      border-color: $secondary;
+      background: rgba($secondary, 0.1);
+    }
+
+    &.meeting {
+      border-color: $primary;
+      background: rgba($primary, 0.1);
+    }
+
+    &.break {
+      border-color: $success;
+      background: rgba($success, 0.1);
+    }
+
+    h6 {
+      margin: 0 0 5px 0;
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: $text-muted;
+    }
+  }
+}
+
+// Chart Overrides
+
+// Dark Mode Overrides
+body.dark-mode {
+  background-color: #1e1e2e;
+  color: #e0e0e0;
+
+  .sidebar {
+    background-color: #252538;
+
+    .brand {
+      color: #f5f6fa;
+    }
+
+    .nav-link {
+      color: #a0a0b0;
+
+      &:hover {
+        background-color: rgba(74, 102, 249, 0.1);
+        color: #fff;
+      }
+
+      &.active {
+        background-color: $primary;
+        color: white;
+      }
+    }
+  }
+
+  .main-content {
+    // background inherited from body
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #f5f6fa;
+  }
+
+  p,
+  small,
+  .text-muted {
+    color: #a0a0b0 !important;
+  }
+
+  // Restyle standard white components
+  .bg-white,
+  .widget-card,
+  .glass-panel {
+    background-color: #252538 !important;
+    color: #e0e0e0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  // Inputs
+  input,
+  select,
+  .form-control,
+  .form-select {
+    background-color: #1e1e2e !important;
+    border-color: #2d2d44;
+    color: #f5f6fa !important;
+  }
+
+  // List Items
+  .list-group-item {
+    background-color: #252538;
+    border-color: #2d2d44;
+    color: #e0e0e0;
+  }
+
+  // Calendar Strip
+  .calendar-strip .day-item {
+    color: #a0a0b0;
+
+    &.active {
+      background-color: $primary;
+      color: white;
+
+      .date {
+        color: white;
+      }
+    }
+
+    .date {
+      color: #f5f6fa;
+    }
+  }
+
+  // Timeline
+  .timeline-item .content {
+    background-color: #1e1e2e;
+
+    &.work {
+      background: rgba($secondary, 0.1);
+    }
+
+    &.meeting {
+      background: rgba($primary, 0.1);
+    }
+  }
+
+  // Dropdowns (Notification)
+  .position-absolute.bg-white {
+    background-color: #252538 !important;
+  }
+}
+
+// Animations
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse-red 1.5s infinite;
+}
+
+// Mobile Polish
+@media (hover: hover) {
+
+  // Only apply hover effects on devices that support hover (not touch)
+  .btn:hover,
+  .nav-link:hover,
+  .widget-card:hover {
+    // Re-apply hover styles here if needed, or simply let the default exist but scoped
+    // For this project, we mainly want to ensure no sticky states.
+  }
+}
+
+@media (hover: none) {
+  .widget-card:hover {
+    transform: none !important; // Disable card lift on touch
+  }
+}
